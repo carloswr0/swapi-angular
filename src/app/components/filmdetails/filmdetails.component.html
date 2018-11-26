@@ -1,0 +1,54 @@
+<div class="sw-container" id="home-container">
+  <div *ngIf="requestFinished">
+    <h1 style="text-align: center;">{{ requestedData.title }}</h1>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>Episode ID: </td>
+          <td>{{ requestedData.episode_id }}</td>
+        </tr>
+        <tr>
+          <td>Opening crawl: </td>
+          <td style="text-align: justify; color: yellow; padding: 0px 50px;">
+            {{ requestedData.opening_crawl }}
+          </td>
+        </tr>
+        <tr>
+          <td>Director: </td>
+          <td>{{ requestedData.director }}</td>
+        </tr>
+        <tr>
+          <td>Producer </td>
+          <td>{{ requestedData.producer }}</td>
+        </tr>
+        <tr>
+          <td>Release Date:  </td>
+          <td>{{ requestedData.release_date }}</td>
+        </tr>
+        <tr>
+          <td>Characters:</td>
+          <td>
+            <div *ngIf="requestFinishedChars">
+              <ul style="padding-left: 0px;">
+                <li class="list-group-item list-group-item-action" *ngFor="let item of characters">
+                  {{item.name}}
+                </li>
+              </ul>
+            </div>
+            <app-loading-animation *ngIf="!requestFinishedChars"></app-loading-animation>
+          </td>
+        </tr>
+        <tr>
+          <td>Created: </td>
+          <td>{{ requestedData.created }}</td>
+        </tr>
+        <tr>
+          <td>Edited: </td>
+          <td>{{ requestedData.edited }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <app-loading-animation *ngIf="!requestFinished"></app-loading-animation>
+</div>
+

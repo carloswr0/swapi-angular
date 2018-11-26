@@ -1,0 +1,27 @@
+<div class="sw-row">
+  <div class="search-form-group">
+    <label *ngIf="requestFinished">Search for {{category | titlecase }}:</label>
+    <app-searchbar *ngIf="requestFinished">
+    </app-searchbar>
+  </div>
+
+  <div class="col-xs-12" *ngIf="requestFinished">
+    <div class="no-results" *ngIf="filteredItems.length === 0 && searchString !== ''" >
+      The search produced 0 results.
+    </div>
+    <div class="table-responsive scrollbar">
+      <table class="table scroll-horizontal" [ngSwitch]="category">
+        <app-films     *ngSwitchCase="'films'" [localItems]="filteredItems.length === 0 ? localItems : filteredItems" [listHeaders]="listHeaders" [searchString]="searchString" [category]="category" ></app-films>
+        <app-people    *ngSwitchCase="'people'" [localItems]="filteredItems.length === 0 ? localItems : filteredItems" [listHeaders]="listHeaders" [searchString]="searchString"></app-people>
+        <app-planets   *ngSwitchCase="'planets'" [localItems]="filteredItems.length === 0 ? localItems : filteredItems" [listHeaders]="listHeaders" [searchString]="searchString"></app-planets>
+        <app-species   *ngSwitchCase="'species'" [localItems]="filteredItems.length === 0 ? localItems : filteredItems" [listHeaders]="listHeaders" [searchString]="searchString"></app-species>
+        <app-starships *ngSwitchCase="'starships'" [localItems]="filteredItems.length === 0 ? localItems : filteredItems" [listHeaders]="listHeaders" [searchString]="searchString"></app-starships>
+        <app-vehicles  *ngSwitchCase="'vehicles'" [localItems]="filteredItems.length === 0 ? localItems : filteredItems" [listHeaders]="listHeaders" [searchString]="searchString"></app-vehicles>
+      </table>
+    </div>
+  </div>
+
+  <app-loading-animation *ngIf="!requestFinished">
+  </app-loading-animation>
+
+</div>

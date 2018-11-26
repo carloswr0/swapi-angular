@@ -1,0 +1,44 @@
+<div *ngIf="localItems.length > 0">
+  <thead>
+      <th *ngFor="let header of listHeaders">
+        {{header}}
+      </th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of localItems; let i = index">
+      <td
+        [innerHTML]="item.name | highlight: searchString">
+      </td>
+      <td>
+        {{item.diameter}}
+      </td>
+      <td>
+        {{item.rotation_period}}
+      </td>
+      <td>
+        {{item.orbital_period}}
+      </td>
+      <td>
+        {{item.gravity}}
+      </td>
+      <td>
+        {{item.population}}
+      </td>
+      <td>
+        {{item.climate}}
+      </td>
+      <td>
+        {{item.terrain}}
+      </td>
+      <td>
+        {{item.surface_water}}
+      </td>
+      <td>
+        <i class="fas fa-times fa-icon delete" (click)="onDeleteFromList(i)"></i>
+      </td>
+    </tr>
+  </tbody>
+</div>
+<div *ngIf="localItems.length === 0" style="text-align: center; margin: 2rem 0px;">
+  There are no items in this list.
+</div>

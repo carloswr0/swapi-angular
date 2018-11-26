@@ -1,0 +1,30 @@
+<table style="width: 100%; box-sizing: content-box!important;" *ngIf="localItems.length > 0">
+  <thead>
+    <th *ngFor="let header of listHeaders">
+      {{header}}
+    </th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of localItems; let i = index">
+      <td
+        [innerHTML]="item.title | highlight: searchString">
+      </td>
+      <td>
+        {{item.episode_id}}
+      </td>
+      <td>
+        {{item.director}}
+      </td>
+      <td>
+        {{item.producer}}
+      </td>
+      <td>
+        {{item.release_date}}
+      </td>
+      <td>
+        <i class="fas fa-times fa-icon delete" (click)="onDeleteFromList(i)"></i>
+        <a class="fas fa-arrow-alt-circle-right fa-icon detail" [routerLink]="['/'+category, item.episode_id]"></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
