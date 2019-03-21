@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/86e70957-136f-4ea0-98ab-f154bf5829c1/deploy-status)](https://app.netlify.com/sites/star-wars-archive/deploys)
+
 # SWAPI
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.0-rc.1.
